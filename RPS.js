@@ -10,3 +10,17 @@ function getComputerChoice() {
             return 'scissors';
     }
 }
+
+function getHumanChoice() {
+    
+    let input = prompt("Enter 'R' for rock, 'P' for paper, or 'S' for scissors.");
+    input = input.toUpperCase();
+    switch(input) {
+        case 'R':
+            return 'rock';
+        case 'P':
+            return 'paper';
+        case 'S':
+            return 'scissors';
+    }
+}
