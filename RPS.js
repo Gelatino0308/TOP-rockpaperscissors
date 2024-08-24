@@ -1,4 +1,7 @@
 
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let randInt = Math.floor(Math.random() * 3 + 1);
     switch(randInt) {
@@ -13,18 +16,17 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     
-    let input = prompt("Enter 'R' for rock, 'P' for paper, or 'S' for scissors.");
+    let input = prompt("Enter rock, paper, or scissors.");
+
     if (input) {
-        input = input.toUpperCase();
+        input = input.toLowerCase();
         switch(input) {
-            case 'R':
-                return 'rock';
-            case 'P':
-                return 'paper';
-            case 'S':
-                return 'scissors';
-            default:
-                alert("Enter 'R', 'P', or 'S' only!");
+            case 'rock':
+            case 'paper':
+            case 'scissors':
+                return input;
+            default: 
+                alert("Check your spelling!");
                 return getHumanChoice();
         }
     }
@@ -33,3 +35,13 @@ function getHumanChoice() {
         return input;
     }
 }
+
+
+function playRound(humanChoice, computerChoice) {
+    
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
