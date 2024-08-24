@@ -76,7 +76,7 @@ function playGame() {
                     }
                     break;
                 default:
-                    return;
+                    return 'quit';
             }
         }
 
@@ -87,14 +87,17 @@ function playGame() {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
 
-        playRound(humanSelection, computerSelection);
+        let status = playRound(humanSelection, computerSelection);
+        if (status === 'quit') {
+            break;
+        }
     }
 
     if (humanScore === computerScore) {
         console.log("IT'S A TIE");
     }
     else {
-        humanScore > computerScore ? 'Winner: HUMAN' : 'Winner: COMPUTER';
+        console.log(humanScore > computerScore ? 'Winner: HUMAN' : 'Winner: COMPUTER');
     }
 }
 
