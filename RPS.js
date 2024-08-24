@@ -14,13 +14,22 @@ function getComputerChoice() {
 function getHumanChoice() {
     
     let input = prompt("Enter 'R' for rock, 'P' for paper, or 'S' for scissors.");
-    input = input.toUpperCase();
-    switch(input) {
-        case 'R':
-            return 'rock';
-        case 'P':
-            return 'paper';
-        case 'S':
-            return 'scissors';
+    if (input) {
+        input = input.toUpperCase();
+        switch(input) {
+            case 'R':
+                return 'rock';
+            case 'P':
+                return 'paper';
+            case 'S':
+                return 'scissors';
+            default:
+                alert("Enter 'R', 'P', or 'S' only!");
+                return getHumanChoice();
+        }
+    }
+    else {
+        alert('Bye!');
+        return input;
     }
 }
