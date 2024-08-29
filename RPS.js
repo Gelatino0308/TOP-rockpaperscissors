@@ -83,15 +83,11 @@ function playGame() {
         console.log(`Scores:\n Human: ${humanScore}\n Computer: ${computerScore}`);
     }
 
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
+    
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
 
-        let status = playRound(humanSelection, computerSelection);
-        if (status === 'quit') {
-            break;
-        }
-    }
+    playRound(humanSelection, computerSelection);
 
     if (humanScore === computerScore) {
         console.log("IT'S A TIE");
