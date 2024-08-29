@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: lightblue;
+}
+
+/* div {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+} */
+
+.header {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(9, 44, 85);
+    color: white;
+    /* font-size: 25px;
+    font-weight: bolder; */
+}
+
+.description {
+    padding: 10px 20px;
+}
+
+.descPara {
+    padding-left: 15px;
+    font-size: 18px;
+}
+
+.RPS-section {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(9, 44, 85);
+    padding: 30px;
+}
+
+.RPS-section div {
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    /* padding: 10px 50px; */
+    /* border: 8px solid black; */
+    min-width: 200px;
+    min-height: 180px;
+    align-items: center;
+    border-radius: 10px;
+    /* gap: 5px; */
+    justify-content: space-evenly;
+}
+
+.btnRock, .btnPaper, .btnScissors {
+    font-size: 18px;
+    font-weight: 500;
+    background-color: rgb(9, 44, 85);
+    color: white;
+    padding: 5px 20px;
+    border-color: white;
+    border-radius: 5px;
+}
+/* .btnNewGame {
+    font-size: 20px;
+    font-weight: 500;
+    background-color: rgb(9, 44, 85);
+    color: white;
+    padding: 5px 15px;
+    border-color: white;
+    border-radius: 10px;
+} */
