@@ -82,9 +82,10 @@ button {
     align-items: center;
 }
 
-.divNewGame button {
+#newgame {
     font-size: 30px;
     border-radius: 15px;
+    margin: 20px;
 }
 
 .divInGame {

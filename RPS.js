@@ -11,10 +11,7 @@ function getComputerChoice() {
     }
 }
 
-
-const btnNewGame = document.querySelector("#newgame");
-
-btnNewGame.addEventListener("click", () => {
+function playGame() {
 
     let humanScore = 0;
     let computerScore = 0;
@@ -65,6 +62,16 @@ btnNewGame.addEventListener("click", () => {
         pScores.textContent = `Player: ${humanScore}    |    Computer: ${computerScore}`;
 
         if (humanScore >= 5 || computerScore >= 5) {
+            divScore.removeChild(pCurrRound);
+            divScore.removeChild(h4Score);
+            divScore.removeChild(pScores);
+
+            btnNewGame = document.createElement("button");
+            btnNewGame.setAttribute("id", "newgame");
+            btnNewGame.textContent = "New Game";
+            btnNewGame.addEventListener("click", playGame);
+            divScore.appendChild(btnNewGame);
+
             if (humanScore === computerScore) {
                 console.log("IT'S A TIE");
             }
@@ -121,4 +128,7 @@ btnNewGame.addEventListener("click", () => {
             }
         }
     }
-});
+}
+
+let btnNewGame = document.querySelector("#newgame");
+btnNewGame.addEventListener("click", playGame);
