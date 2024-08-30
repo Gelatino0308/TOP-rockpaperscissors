@@ -18,13 +18,13 @@ btnNewGame.addEventListener("click", () => {
 
     let humanScore = 0;
     let computerScore = 0;
-    let roundNum = 1;
+    let currRoundNum = 1;
+    let pastRoundNum = 0;
     
     //to replace the div of new game button with score panel and round winner
     btnNewGame.parentNode.removeChild(btnNewGame);
     const infoPanel = document.querySelector("#infoPanel");
     infoPanel.classList.remove("divNewGame");
-    // const contentBody = document.querySelector("body");
 
     //creating score panel 
     const divScore = document.createElement("div");
@@ -33,9 +33,9 @@ btnNewGame.addEventListener("click", () => {
     const pScores = document.createElement("p");
     const pCurrRound = document.createElement("p");
 
-    h4Score.textContent = 'Score:';
+    h4Score.textContent = 'Scores:';
     pScores.textContent = `Player: ${humanScore}    |    Computer: ${computerScore}`;
-    pCurrRound.textContent = `Current Round: ${roundNum}`;
+    pCurrRound.textContent = `Current Round: ${currRoundNum}`;
 
     divScore.appendChild(pCurrRound);
     divScore.appendChild(h4Score);
@@ -46,7 +46,7 @@ btnNewGame.addEventListener("click", () => {
     
     //creating round winner panel
     const divRoundWinner = document.createElement("div");
-    // divRoundWinner.classList.add("divRoundWinner");
+    divRoundWinner.classList.add("divRoundWinner");
     infoPanel.appendChild(divRoundWinner);
 
 
@@ -55,11 +55,13 @@ btnNewGame.addEventListener("click", () => {
     btnRPS.addEventListener("click", (event) => {
         let target = event.target;
 
+        infoPanel.classList.add("divInGame");
+
         const playerSelection = target.id;
         const computerSelection = getComputerChoice();
-
+        
         playRound(playerSelection, computerSelection);
-        pCurrRound.textContent = `Current Round: ${++roundNum}`;
+        pCurrRound.textContent = `Current Round: ${++currRoundNum}`;
         pScores.textContent = `Player: ${humanScore}    |    Computer: ${computerScore}`;
 
         if (humanScore >= 5 || computerScore >= 5) {
@@ -75,43 +77,48 @@ btnNewGame.addEventListener("click", () => {
     function playRound(humanChoice, computerChoice) {
 
         if (humanChoice === computerChoice) {
-            console.log(`It's a tie! ${humanChoice} and ${computerChoice} are equal.`);
+            divRoundWinner.textContent = "";
+            divRoundWinner.textContent = `Round#${++pastRoundNum} Result: It's a tie! ${humanChoice} and ${computerChoice} are equal.`;
         }
         else {
             switch(humanChoice) {
                 case 'rock':
                     if (computerChoice === 'paper') {
-                        console.log(`You LOSE! Paper beats rock.`);
+                        divRoundWinner.textContent = "";
+                        divRoundWinner.textContent = `Round#${++pastRoundNum} Result: You LOSE! Paper beats rock.`;
                         computerScore++;
                     }
                     else if (computerChoice === 'scissors') {
-                        console.log(`You WIN! Rock beats scissors.`);
+                        divRoundWinner.textContent = "";
+                        divRoundWinner.textContent = `Round#${++pastRoundNum} Result: You WIN! Rock beats scissors.`;
                         humanScore++;
                     }
                     break;
                 case 'paper':
                     if (computerChoice === 'rock') {
-                        console.log(`You WIN! Paper beats rock.`);
+                        divRoundWinner.textContent = "";
+                        divRoundWinner.textContent = `Round#${++pastRoundNum} Result: You WIN! Paper beats rock.`;
                         humanScore++;
                     }
                     else if (computerChoice === 'scissors') {
-                        console.log(`You LOSE! Scissors beats paper.`);
+                        divRoundWinner.textContent = "";
+                        divRoundWinner.textContent = `Round#${++pastRoundNum} Result: You LOSE! Scissors beats paper.`;
                         computerScore++;
                         }
                     break;
                 case 'scissors':
                     if (computerChoice === 'rock') {
-                        console.log(`You LOSE! Rock beats scissors.`);
+                        divRoundWinner.textContent = "";
+                        divRoundWinner.textContent = `Round#${++pastRoundNum} Result: You LOSE! Rock beats scissors.`;
                         computerScore++;
                     }
                     else if (computerChoice === 'paper') {
-                        console.log(`You WIN! Scissors beats paper.`);
+                        divRoundWinner.textContent = "";
+                        divRoundWinner.textContent = `Round#${++pastRoundNum} Result: You WIN! Scissors beats paper.`;
                         humanScore++;
                     }
                     break;
             }
         }
-    
-        console.log(`Scores:\n Human: ${humanScore}\n Computer: ${computerScore}`);
     }
 });

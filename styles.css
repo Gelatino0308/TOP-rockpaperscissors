@@ -47,7 +47,9 @@ button {
 
 .descPara {
     padding-left: 15px;
+    margin-top: 10px;
     font-size: 18px;
+    font-weight: 500;
 }
 
 .RPS-section {
@@ -80,6 +82,17 @@ button {
     align-items: center;
 }
 
+.divNewGame button {
+    font-size: 30px;
+    border-radius: 15px;
+}
+
+.divInGame {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .divScore {
     display: flex;
     justify-content: center;
@@ -95,6 +108,12 @@ button {
 }
  
 .divRoundWinner {
+    display: flex;
     flex: 1;
     background-color: rgb(9, 44, 85);
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
 }
