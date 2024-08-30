@@ -13,6 +13,16 @@ body {
     background-color: lightblue;
 }
 
+button {
+    font-size: 18px;
+    font-weight: 500;
+    background-color: rgb(9, 44, 85);
+    color: white;
+    padding: 5px 20px;
+    border-color: white;
+    border-radius: 5px;
+}
+
 /* div {
     border-width: 1px;
     border-color: black;
@@ -55,27 +65,16 @@ body {
     /* border: 8px solid black; */
     min-width: 200px;
     min-height: 180px;
-    align-items: center;
     border-radius: 10px;
     /* gap: 5px; */
     justify-content: space-evenly;
+    align-items: center;
 }
 
-.btnRock, .btnPaper, .btnScissors {
-    font-size: 18px;
-    font-weight: 500;
-    background-color: rgb(9, 44, 85);
-    color: white;
-    padding: 5px 20px;
-    border-color: white;
-    border-radius: 5px;
+.divNewGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1;
 }
-/* .btnNewGame {
-    font-size: 20px;
-    font-weight: 500;
-    background-color: rgb(9, 44, 85);
-    color: white;
-    padding: 5px 15px;
-    border-color: white;
-    border-radius: 10px;
-} */
