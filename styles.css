@@ -55,6 +55,8 @@ button {
     justify-content: space-evenly;
     background-color: rgb(9, 44, 85);
     padding: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .RPS-section div {
@@ -73,8 +75,17 @@ button {
 
 .divNewGame {
     display: flex;
+    flex: 1;
     justify-content: center;
     align-items: center;
+}
 
-    flex: 1;
+.divScore {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 80px;
+    font-size: 50px;
+    font-weight: 500;
+    padding: 10px;
 }

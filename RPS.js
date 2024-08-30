@@ -35,8 +35,8 @@ function getHumanChoice() {
 
 function playGame() {
     
-    let humanScore = 0;
-    let computerScore = 0;
+    // let humanScore = 0;
+    // let computerScore = 0;
 
     function playRound(humanChoice, computerChoice) {
 
@@ -97,3 +97,30 @@ function playGame() {
     }
 }
 
+let humanScore = 0;
+let computerScore = 0;
+
+const btnNewGame = document.querySelector("#newgame");
+
+btnNewGame.addEventListener("click", () => {
+    
+    const divNewGame = document.querySelector(".divNewGame");
+    divNewGame.parentNode.removeChild(divNewGame);
+
+    const divScore = document.createElement("div");
+
+    const h4Score = document.createElement("h4");
+    const pScores = document.createElement("p");
+
+    const contentBody = document.querySelector("body");
+
+    h4Score.textContent = 'Score:';
+    pScores.textContent = `Player: ${humanScore}    |    Computer: ${computerScore}`;
+
+    divScore.appendChild(h4Score);
+    divScore.appendChild(pScores);
+
+    contentBody.appendChild(divScore);
+    divScore.classList.add("divScore");
+    
+});
