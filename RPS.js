@@ -11,16 +11,32 @@ function getComputerChoice() {
     }
 }
 
+let humanScore;
+let computerScore;
+let currRoundNum;
+let pastRoundNum;
+
 function playGame() {
 
-    let humanScore = 0;
-    let computerScore = 0;
-    let currRoundNum = 1;
-    let pastRoundNum = 0;
+    humanScore = 0;
+    computerScore = 0;
+    currRoundNum = 1;
+    pastRoundNum = 0;
     
     //to replace the div of new game button with score panel and round winner
     btnNewGame.parentNode.removeChild(btnNewGame);
     const infoPanel = document.querySelector("#infoPanel");
+
+    const prevDivScore = infoPanel.querySelector(".divScore");
+    if(prevDivScore) {
+        prevDivScore.parentNode.removeChild(prevDivScore);
+    }
+
+    const prevRoundWinner = infoPanel.querySelector(".divRoundWinner");
+    if(prevRoundWinner) {
+        prevRoundWinner.parentNode.removeChild(prevRoundWinner);
+    }
+    
     infoPanel.classList.remove("divNewGame");
 
     //creating score panel 
@@ -69,14 +85,15 @@ function playGame() {
             btnNewGame = document.createElement("button");
             btnNewGame.setAttribute("id", "newgame");
             btnNewGame.textContent = "New Game";
-            btnNewGame.addEventListener("click", playGame);
             divScore.appendChild(btnNewGame);
+            btnNewGame.addEventListener("click", playGame);
 
             if (humanScore === computerScore) {
-                console.log("IT'S A TIE");
+                divRoundWinner.textContent = "FINAL GAME RESULT: IT'S A TIE";
             }
             else {
-                console.log(humanScore > computerScore ? 'Winner: HUMAN' : 'Winner: COMPUTER');
+                humanScore > computerScore ? divRoundWinner.textContent = "FINAL GAME RESULT: CONGRATS! YOU WIN!!!" 
+                                            : divRoundWinner.textContent = "FINAL GAME RESULT: COMPUTER WINS =(";
             }
         }
     });
