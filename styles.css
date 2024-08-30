@@ -84,8 +84,17 @@ button {
     display: flex;
     justify-content: center;
     align-items: baseline;
-    gap: 80px;
+    gap: 50px;
     font-size: 50px;
     font-weight: 500;
     padding: 10px;
+}
+
+.divScore h4 {
+    margin-left: 100px;
+}
+ 
+.divRoundWinner {
+    flex: 1;
+    background-color: rgb(9, 44, 85);
 }
