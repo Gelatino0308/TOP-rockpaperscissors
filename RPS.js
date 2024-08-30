@@ -18,13 +18,13 @@ btnNewGame.addEventListener("click", () => {
 
     let humanScore = 0;
     let computerScore = 0;
-    let rounds = 0;
     let roundNum = 1;
     
     //to replace the div of new game button with score panel and round winner
-    const divNewGame = document.querySelector(".divNewGame");
-    divNewGame.parentNode.removeChild(divNewGame);
-    const contentBody = document.querySelector("body");
+    btnNewGame.parentNode.removeChild(btnNewGame);
+    const infoPanel = document.querySelector("#infoPanel");
+    infoPanel.classList.remove("divNewGame");
+    // const contentBody = document.querySelector("body");
 
     //creating score panel 
     const divScore = document.createElement("div");
@@ -41,13 +41,14 @@ btnNewGame.addEventListener("click", () => {
     divScore.appendChild(h4Score);
     divScore.appendChild(pScores);
 
-    contentBody.appendChild(divScore);
+    infoPanel.appendChild(divScore);
     divScore.classList.add("divScore");
     
     //creating round winner panel
     const divRoundWinner = document.createElement("div");
     // divRoundWinner.classList.add("divRoundWinner");
-    contentBody.appendChild(divRoundWinner);
+    infoPanel.appendChild(divRoundWinner);
+
 
     const btnRPS = document.querySelector(".RPS-section");
 
@@ -58,6 +59,8 @@ btnNewGame.addEventListener("click", () => {
         const computerSelection = getComputerChoice();
 
         playRound(playerSelection, computerSelection);
+        pCurrRound.textContent = `Current Round: ${++roundNum}`;
+        pScores.textContent = `Player: ${humanScore}    |    Computer: ${computerScore}`;
 
         if (humanScore >= 5 || computerScore >= 5) {
             if (humanScore === computerScore) {
@@ -106,8 +109,6 @@ btnNewGame.addEventListener("click", () => {
                         humanScore++;
                     }
                     break;
-                default:
-                    return 'quit';
             }
         }
     
