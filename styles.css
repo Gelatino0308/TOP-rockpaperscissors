@@ -23,12 +23,6 @@ button {
     border-radius: 5px;
 }
 
-/* div {
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
-} */
-
 .header {
     display: flex;
     padding: 20px;
@@ -37,8 +31,6 @@ button {
 
     background-color: rgb(9, 44, 85);
     color: white;
-    /* font-size: 25px;
-    font-weight: bolder; */
 }
 
 .description {
@@ -65,12 +57,9 @@ button {
     display: flex;
     flex-direction: column;
     background-color: lightblue;
-    /* padding: 10px 50px; */
-    /* border: 8px solid black; */
     min-width: 200px;
     min-height: 180px;
     border-radius: 10px;
-    /* gap: 5px; */
     justify-content: space-evenly;
     align-items: center;
 }

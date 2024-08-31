@@ -1,4 +1,3 @@
-
 function getComputerChoice() {
     let randInt = Math.floor(Math.random() * 3 + 1);
     switch(randInt) {
@@ -80,10 +79,9 @@ function playGame() {
     divScore.classList.add("divScore");
     
     //creating round winner panel
+
     const divRoundWinner = document.createElement("div");
     divRoundWinner.classList.add("divRoundWinner");
-    infoPanel.appendChild(divRoundWinner);
-
 
     const btnRPS = document.querySelectorAll(".btnRPS");
 
@@ -93,6 +91,7 @@ function playGame() {
             let target = event.target;
     
             infoPanel.classList.add("divInGame");
+            infoPanel.appendChild(divRoundWinner);
     
             const playerSelection = target.id;
             const computerSelection = getComputerChoice();
@@ -101,7 +100,9 @@ function playGame() {
 
             pCurrRound.textContent = `Current Round: ${++currRoundNum}`;
             pScores.textContent = `Player: ${humanScore}    |    Computer: ${computerScore}`;
-    
+            
+            //terminates the game once someone gets 5 points
+
             if (humanScore >= 5 || computerScore >= 5) {
                 
                 divRoundWinner.textContent = `Final Score: PLAYER: ${humanScore} | COMPUTER: ${computerScore} ----> `;
