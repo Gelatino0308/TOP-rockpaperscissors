@@ -11,19 +11,43 @@ function getComputerChoice() {
     }
 }
 
-let humanScore;
-let computerScore;
-let currRoundNum;
-let pastRoundNum;
+// let humanScore;
+// let computerScore;
+// let currRoundNum;
+// let pastRoundNum;
 
 function playGame() {
 
-    humanScore = 0;
-    computerScore = 0;
-    currRoundNum = 1;
-    pastRoundNum = 0;
+    let humanScore = 0;
+    let computerScore = 0;
+    let currRoundNum = 1;
+    let pastRoundNum = 0;
+
+    //includes the RPS buttons only after new game
+
+    const btnRock = document.createElement("button");
+    btnRock.setAttribute("id", "rock");
+    btnRock.textContent = "Rock"; 
+
+    const divRock = document.querySelector("#divRock");
+    divRock.appendChild(btnRock);
+
+    const btnPaper = document.createElement("button");
+    btnPaper.setAttribute("id", "paper");
+    btnPaper.textContent = "Paper"; 
+
+    const divPaper = document.querySelector("#divPaper");
+    divPaper.appendChild(btnPaper);
+
+    const btnScissors = document.createElement("button");
+    btnScissors.setAttribute("id", "scissors");
+    btnScissors.textContent = "Scissors"; 
+
+    const divScissors = document.querySelector("#divScissors");
+    divScissors.appendChild(btnScissors);
     
     //to replace the div of new game button with score panel and round winner
+    
     btnNewGame.parentNode.removeChild(btnNewGame);
     const infoPanel = document.querySelector("#infoPanel");
 
@@ -85,8 +109,8 @@ function playGame() {
             btnNewGame = document.createElement("button");
             btnNewGame.setAttribute("id", "newgame");
             btnNewGame.textContent = "New Game";
-            divScore.appendChild(btnNewGame);
             btnNewGame.addEventListener("click", playGame);
+            divScore.appendChild(btnNewGame);
 
             if (humanScore === computerScore) {
                 divRoundWinner.textContent = "FINAL GAME RESULT: IT'S A TIE";
