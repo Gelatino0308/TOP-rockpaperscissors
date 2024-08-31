@@ -11,11 +11,6 @@ function getComputerChoice() {
     }
 }
 
-// let humanScore;
-// let computerScore;
-// let currRoundNum;
-// let pastRoundNum;
-
 function playGame() {
 
     let humanScore = 0;
@@ -108,14 +103,10 @@ function playGame() {
             pScores.textContent = `Player: ${humanScore}    |    Computer: ${computerScore}`;
     
             if (humanScore >= 5 || computerScore >= 5) {
-    
-                if (humanScore === computerScore) {
-                    divRoundWinner.textContent = "FINAL GAME RESULT: IT'S A TIE";
-                }
-                else {
-                    humanScore > computerScore ? divRoundWinner.textContent = "FINAL GAME RESULT: CONGRATS! YOU WIN!!!" 
-                                                : divRoundWinner.textContent = "FINAL GAME RESULT: COMPUTER WINS =(";
-                }
+                
+                divRoundWinner.textContent = `Final Score: PLAYER: ${humanScore} | COMPUTER: ${computerScore} ----> `;
+                humanScore > computerScore ? divRoundWinner.textContent += "FINAL GAME RESULT: CONGRATS! YOU WIN!!!" 
+                                            : divRoundWinner.textContent += "FINAL GAME RESULT: COMPUTER WINS =(";
     
                 divScore.removeChild(pCurrRound);
                 divScore.removeChild(h4Score);
