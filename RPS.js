@@ -27,6 +27,7 @@ function playGame() {
 
     const btnRock = document.createElement("button");
     btnRock.setAttribute("id", "rock");
+    btnRock.classList.add("btnRPS");
     btnRock.textContent = "Rock"; 
 
     const divRock = document.querySelector("#divRock");
@@ -34,6 +35,7 @@ function playGame() {
 
     const btnPaper = document.createElement("button");
     btnPaper.setAttribute("id", "paper");
+    btnPaper.classList.add("btnRPS");
     btnPaper.textContent = "Paper"; 
 
     const divPaper = document.querySelector("#divPaper");
@@ -41,13 +43,14 @@ function playGame() {
 
     const btnScissors = document.createElement("button");
     btnScissors.setAttribute("id", "scissors");
+    btnScissors.classList.add("btnRPS");
     btnScissors.textContent = "Scissors"; 
 
     const divScissors = document.querySelector("#divScissors");
     divScissors.appendChild(btnScissors);
     
     //to replace the div of new game button with score panel and round winner
-    
+
     btnNewGame.parentNode.removeChild(btnNewGame);
     const infoPanel = document.querySelector("#infoPanel");
 
@@ -87,39 +90,48 @@ function playGame() {
     infoPanel.appendChild(divRoundWinner);
 
 
-    const btnRPS = document.querySelector(".RPS-section");
+    const btnRPS = document.querySelectorAll(".btnRPS");
 
-    btnRPS.addEventListener("click", (event) => {
-        let target = event.target;
+    btnRPS.forEach(btn => {
 
-        infoPanel.classList.add("divInGame");
+        btn.addEventListener("click", (event) => {
+            let target = event.target;
+    
+            infoPanel.classList.add("divInGame");
+    
+            const playerSelection = target.id;
+            const computerSelection = getComputerChoice();
+            
+            playRound(playerSelection, computerSelection);
 
-        const playerSelection = target.id;
-        const computerSelection = getComputerChoice();
-        
-        playRound(playerSelection, computerSelection);
-        pCurrRound.textContent = `Current Round: ${++currRoundNum}`;
-        pScores.textContent = `Player: ${humanScore}    |    Computer: ${computerScore}`;
-
-        if (humanScore >= 5 || computerScore >= 5) {
-            divScore.removeChild(pCurrRound);
-            divScore.removeChild(h4Score);
-            divScore.removeChild(pScores);
-
-            btnNewGame = document.createElement("button");
-            btnNewGame.setAttribute("id", "newgame");
-            btnNewGame.textContent = "New Game";
-            btnNewGame.addEventListener("click", playGame);
-            divScore.appendChild(btnNewGame);
-
-            if (humanScore === computerScore) {
-                divRoundWinner.textContent = "FINAL GAME RESULT: IT'S A TIE";
+            pCurrRound.textContent = `Current Round: ${++currRoundNum}`;
+            pScores.textContent = `Player: ${humanScore}    |    Computer: ${computerScore}`;
+    
+            if (humanScore >= 5 || computerScore >= 5) {
+    
+                if (humanScore === computerScore) {
+                    divRoundWinner.textContent = "FINAL GAME RESULT: IT'S A TIE";
+                }
+                else {
+                    humanScore > computerScore ? divRoundWinner.textContent = "FINAL GAME RESULT: CONGRATS! YOU WIN!!!" 
+                                                : divRoundWinner.textContent = "FINAL GAME RESULT: COMPUTER WINS =(";
+                }
+    
+                divScore.removeChild(pCurrRound);
+                divScore.removeChild(h4Score);
+                divScore.removeChild(pScores);
+    
+                divRock.removeChild(btnRock);
+                divPaper.removeChild(btnPaper);
+                divScissors.removeChild(btnScissors);
+    
+                btnNewGame = document.createElement("button");
+                btnNewGame.setAttribute("id", "newgame");
+                btnNewGame.textContent = "New Game";
+                btnNewGame.addEventListener("click", playGame);
+                divScore.appendChild(btnNewGame);
             }
-            else {
-                humanScore > computerScore ? divRoundWinner.textContent = "FINAL GAME RESULT: CONGRATS! YOU WIN!!!" 
-                                            : divRoundWinner.textContent = "FINAL GAME RESULT: COMPUTER WINS =(";
-            }
-        }
+        });
     });
 
     function playRound(humanChoice, computerChoice) {
